@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_buttonsTextSize">20sp</dimen>
+    <dimen name="_mainDisplayTextSize">60sp</dimen>
+    <dimen name="_historyDisplayTextSize">25sp</dimen>
+</resources>
