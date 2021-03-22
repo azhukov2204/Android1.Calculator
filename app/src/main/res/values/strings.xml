@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="_AC">АС</string>
-    <string name="_plus_minus">+/-</string>
-    <string name="_minus">-</string>
+    <string name="_backspace">⌫</string>
     <string name="_percents">%</string>
     <string name="_divide">÷</string>
     <string name="_7">7</string>
@@ -19,4 +18,5 @@
     <string name="_0">0</string>
     <string name="_point">.</string>
     <string name="_equals">=</string>
+    <string name="_minus">-</string>
 </resources>

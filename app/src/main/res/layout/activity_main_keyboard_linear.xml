@@ -22,13 +22,13 @@
             tools:ignore="NestedWeights" />
 
         <Button
-            android:id="@+id/button_plus_minus"
+            android:id="@+id/button_backspace"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:text="@string/_plus_minus"
+            android:text="@string/_backspace"
             android:textSize="@dimen/_buttonsTextSize" />
 
         <Button
@@ -204,7 +204,8 @@
             android:layout_marginEnd="4dp"
             android:layout_weight="2.1"
             android:text="@string/_0"
-            android:textSize="@dimen/_buttonsTextSize" />
+            android:textSize="@dimen/_buttonsTextSize"
+            tools:ignore="NestedWeights" />
 
         <Button
             android:id="@+id/button_point"
