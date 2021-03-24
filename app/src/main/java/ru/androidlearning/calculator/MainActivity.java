@@ -98,26 +98,18 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(8)));
         button9.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(9)));
         buttonPoint.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnPoint()));
+
+        buttonPlus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PLUS)));
+        buttonMinus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MINUS)));
+        buttonMultiple.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MULTIPLE)));
+        buttonDivide.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.DIVIDE)));
+        buttonPercents.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PERCENTS)));
+        buttonAC.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
+        buttonBackspace.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
+
         buttonEquals.setOnClickListener(v -> {
 
         });
-        buttonPlus.setOnClickListener(v -> {
-
-        });
-        buttonMinus.setOnClickListener(v -> {
-
-        });
-        buttonMultiple.setOnClickListener(v -> {
-
-        });
-        buttonDivide.setOnClickListener(v -> {
-
-        });
-        buttonPercents.setOnClickListener(v -> {
-
-        });
-        buttonAC.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
-        buttonBackspace.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
     }
 
     @Override

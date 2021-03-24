@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
         <Button
             android:id="@+id/button_ac"
             android:layout_width="0dp"
@@ -17,6 +20,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_AC"
             android:textSize="@dimen/_buttonsTextSize"
             tools:ignore="NestedWeights" />
@@ -28,6 +32,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_backspace"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -38,6 +43,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_percents"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -48,15 +54,18 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_divide"
             android:textSize="@dimen/_buttonsTextSize" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
         <Button
             android:id="@+id/button_7"
             android:layout_width="0dp"
@@ -64,6 +73,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_7"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -74,6 +84,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_8"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -84,6 +95,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_9"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -94,15 +106,18 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_multiple"
             android:textSize="@dimen/_buttonsTextSize" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
         <Button
             android:id="@+id/button_4"
             android:layout_width="0dp"
@@ -110,6 +125,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_4"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -120,6 +136,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_5"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -130,6 +147,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_6"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -140,15 +158,18 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_minus"
             android:textSize="@dimen/_buttonsTextSize" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
         <Button
             android:id="@+id/button_1"
             android:layout_width="0dp"
@@ -156,6 +177,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_1"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -166,6 +188,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_2"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -176,6 +199,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_3"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -186,23 +210,27 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_plus"
             android:textSize="@dimen/_buttonsTextSize" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
         <Button
             android:id="@+id/button_0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
-            android:layout_weight="2.1"
+            android:layout_weight="2"
+            android:gravity="center"
             android:text="@string/_0"
             android:textSize="@dimen/_buttonsTextSize"
             tools:ignore="NestedWeights" />
@@ -214,8 +242,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-
-
+            android:gravity="center"
             android:text="@string/_point"
             android:textSize="@dimen/_buttonsTextSize" />
 
@@ -226,6 +253,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/_equals"
             android:textSize="@dimen/_buttonsTextSize" />
     </LinearLayout>

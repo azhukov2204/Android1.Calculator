@@ -1,39 +1,41 @@
 package ru.androidlearning.calculator;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.annotation.RequiresApi;
 
 public class CalculatorProcessor implements Parcelable {
     private String mainDisplayString;
     private String historyDisplay1String;
     private String historyDisplay2String;
     private String historyDisplay3String;
+    private String firstNumber;
+    private String secondNumber;
     private boolean isPointPressed;
+    private boolean isActionButtonPressed;
 
     public CalculatorProcessor() {
         mainDisplayString = "";
         historyDisplay1String = "";
         historyDisplay2String = "";
         historyDisplay3String = "";
+        firstNumber = "";
+        secondNumber = "";
         isPointPressed = false;
+        isActionButtonPressed = false;
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     public CalculatorProcessor(Parcel in) {
         mainDisplayString = in.readString();
         historyDisplay1String = in.readString();
         historyDisplay2String = in.readString();
         historyDisplay3String = in.readString();
-        isPointPressed = in.readBoolean();
+        int isPointPressedInt = in.readInt();
+        isPointPressed = (isPointPressedInt == 1);
     }
 
     public static final Creator<CalculatorProcessor> CREATOR = new Creator<CalculatorProcessor>() {
-        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public CalculatorProcessor createFromParcel(Parcel source) {
             return new CalculatorProcessor(source);
@@ -44,44 +46,6 @@ public class CalculatorProcessor implements Parcelable {
             return new CalculatorProcessor[size];
         }
     };
-
-
-    @SuppressLint("DefaultLocale")
-    public String clickOnNumber(int number) {
-        if (mainDisplayString.equals("0")) {
-            mainDisplayString = "";
-        }
-        mainDisplayString = String.format("%s%s", mainDisplayString, String.format("%d", number));
-        return mainDisplayString;
-    }
-
-    public String clickOnAC() {
-        mainDisplayString = "";
-        isPointPressed = false;
-        return mainDisplayString;
-    }
-
-    public String clickOnBackspace() {
-        if (!mainDisplayString.equals("")) {
-            if ( mainDisplayString.toCharArray()[mainDisplayString.length()-1] =='.') {
-                isPointPressed = false;
-            }
-            mainDisplayString = mainDisplayString.substring(0, mainDisplayString.length()-1);
-        }
-        return  mainDisplayString;
-    }
-
-    public String clickOnPoint() {
-        if (!isPointPressed) {
-            isPointPressed = true;
-            if (mainDisplayString.isEmpty()) {
-                mainDisplayString = "0";
-            }
-            mainDisplayString = String.format("%s%s", mainDisplayString, ".");
-        }
-        return mainDisplayString;
-    }
-
 
     public String getMainDisplayString() {
         return mainDisplayString;
@@ -104,14 +68,85 @@ public class CalculatorProcessor implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mainDisplayString);
         dest.writeString(historyDisplay1String);
         dest.writeString(historyDisplay2String);
         dest.writeString(historyDisplay3String);
-        dest.writeBoolean(isPointPressed);
+        dest.writeInt(isPointPressed ? 1 : 0); //writeBoolean не совместим со старыми API, поэтому ради совместимости делаю через этот метод
 
     }
+
+    @SuppressLint("DefaultLocale")
+    public String clickOnNumber(int number) {
+        if (mainDisplayString.equals("0")) {
+            mainDisplayString = "";
+        }
+        mainDisplayString = String.format("%s%s", mainDisplayString, String.format("%d", number));
+        return mainDisplayString;
+    }
+
+    public String clickOnAC() {
+        mainDisplayString = "";
+        isPointPressed = false;
+        isActionButtonPressed = false;
+        return mainDisplayString;
+    }
+
+    public String clickOnBackspace() {
+        if (!mainDisplayString.isEmpty()) {
+            if (mainDisplayString.endsWith(".")) {
+                isPointPressed = false;
+            } else if (checkEndOfLineContainAction()) {
+                isActionButtonPressed = false;
+            }
+            mainDisplayString = mainDisplayString.substring(0, mainDisplayString.length() - 1);
+        }
+        return mainDisplayString;
+    }
+
+    public String clickOnPoint() {
+        if (!isPointPressed) {
+            isPointPressed = true;
+            if (mainDisplayString.isEmpty() || mainDisplayString.equals("-")) {
+                mainDisplayString += "0";
+            }
+            mainDisplayString = String.format("%s%s", mainDisplayString, ".");
+        }
+        return mainDisplayString;
+    }
+
+    public String clickOnAction(Actions action) {
+        if (mainDisplayString.isEmpty()) {
+            if (action == Actions.MINUS) {
+                mainDisplayString = action.getActionChar();
+            }
+            isActionButtonPressed = false;
+        } else {
+            if (isActionButtonPressed) {
+                if (checkEndOfLineContainAction()) {
+                    mainDisplayString = mainDisplayString.substring(0, mainDisplayString.length() - 1) + action.getActionChar();
+                }
+            } else {
+                if (!mainDisplayString.equals("-")) {
+                    firstNumber = String.format("%s", mainDisplayString);
+                    System.out.println(firstNumber);
+                    mainDisplayString = String.format("%s%s", mainDisplayString, action.getActionChar());
+                    isActionButtonPressed = true;
+                } else {
+                    if (action != Actions.MINUS) {
+                        mainDisplayString = "";
+                    }
+                }
+            }
+        }
+        return mainDisplayString;
+    }
+
+    private boolean checkEndOfLineContainAction() {
+        return (mainDisplayString.endsWith("+") || mainDisplayString.endsWith("-") || mainDisplayString.endsWith("×") || mainDisplayString.endsWith("÷") || mainDisplayString.endsWith("%"));
+    }
+
+
 }
