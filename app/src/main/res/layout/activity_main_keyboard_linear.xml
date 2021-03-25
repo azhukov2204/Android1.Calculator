@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="5">
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -57,9 +57,9 @@
             android:gravity="center"
             android:text="@string/_divide"
             android:textSize="@dimen/_buttonsTextSize" />
-    </LinearLayout>
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -109,9 +109,9 @@
             android:gravity="center"
             android:text="@string/_multiple"
             android:textSize="@dimen/_buttonsTextSize" />
-    </LinearLayout>
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -161,9 +161,9 @@
             android:gravity="center"
             android:text="@string/_minus"
             android:textSize="@dimen/_buttonsTextSize" />
-    </LinearLayout>
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -214,9 +214,9 @@
             android:text="@string/_plus"
             android:textSize="@dimen/_buttonsTextSize" />
 
-    </LinearLayout>
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -229,7 +229,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="4dp"
-            android:layout_weight="2"
+            android:layout_weight="2.0"
             android:gravity="center"
             android:text="@string/_0"
             android:textSize="@dimen/_buttonsTextSize"
@@ -256,5 +256,5 @@
             android:gravity="center"
             android:text="@string/_equals"
             android:textSize="@dimen/_buttonsTextSize" />
-    </LinearLayout>
-</LinearLayout>
+    </TableRow>
+</TableLayout>

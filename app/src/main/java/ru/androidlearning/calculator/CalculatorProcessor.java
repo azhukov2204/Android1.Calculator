@@ -1,13 +1,15 @@
 package ru.androidlearning.calculator;
 
+
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.RequiresApi;
-
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 
 public class CalculatorProcessor implements Parcelable {
     private String mainDisplayString;
@@ -20,7 +22,9 @@ public class CalculatorProcessor implements Parcelable {
     private boolean isSecondNumberPointPressed;
     private boolean isFirstNumberEntered;
     private Actions currentAction;
-    private final DecimalFormat decimalFormat = new DecimalFormat("#.####");
+
+    DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.####",symbols);
 
     public CalculatorProcessor() {
         mainDisplayString = "";
@@ -189,10 +193,11 @@ public class CalculatorProcessor implements Parcelable {
         return mainDisplayString;
     }
 
-    @SuppressLint("DefaultLocale")
+
     public String clickOnEquals(boolean isPercents) {
         if (isFirstNumberEntered && currentAction != Actions.EMPTY && !secondNumberStr.isEmpty()) {
             float result;
+            //System.out.println(firstNumberStr);
             float firstNumber = Float.parseFloat(firstNumberStr);
             float secondNumber = Float.parseFloat(secondNumberStr);
 
