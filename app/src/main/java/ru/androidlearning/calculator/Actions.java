@@ -5,7 +5,7 @@ public enum Actions {
     MINUS("-"),
     MULTIPLE("×"),
     DIVIDE("÷"),
-    PERCENTS("%");
+    EMPTY("");
     private final String action;
 
     Actions(String action) {

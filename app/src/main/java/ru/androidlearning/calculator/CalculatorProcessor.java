@@ -1,41 +1,57 @@
 package ru.androidlearning.calculator;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
+
+import java.text.DecimalFormat;
 
 public class CalculatorProcessor implements Parcelable {
     private String mainDisplayString;
     private String historyDisplay1String;
     private String historyDisplay2String;
     private String historyDisplay3String;
-    private String firstNumber;
-    private String secondNumber;
-    private boolean isPointPressed;
-    private boolean isActionButtonPressed;
+    private String firstNumberStr;
+    private String secondNumberStr;
+    private boolean isFirstNumberPointPressed;
+    private boolean isSecondNumberPointPressed;
+    private boolean isFirstNumberEntered;
+    private Actions currentAction;
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.####");
 
     public CalculatorProcessor() {
         mainDisplayString = "";
         historyDisplay1String = "";
         historyDisplay2String = "";
         historyDisplay3String = "";
-        firstNumber = "";
-        secondNumber = "";
-        isPointPressed = false;
-        isActionButtonPressed = false;
+        firstNumberStr = "";
+        secondNumberStr = "";
+        isFirstNumberPointPressed = false;
+        isSecondNumberPointPressed = false;
+        currentAction = Actions.EMPTY;
+        isFirstNumberEntered = false;
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     public CalculatorProcessor(Parcel in) {
         mainDisplayString = in.readString();
         historyDisplay1String = in.readString();
         historyDisplay2String = in.readString();
         historyDisplay3String = in.readString();
-        int isPointPressedInt = in.readInt();
-        isPointPressed = (isPointPressedInt == 1);
+        firstNumberStr = in.readString();
+        secondNumberStr = in.readString();
+        isFirstNumberPointPressed = in.readBoolean();
+        isSecondNumberPointPressed = in.readBoolean();
+        isFirstNumberEntered = in.readBoolean();
+        currentAction = Actions.valueOf(in.readString());
     }
 
     public static final Creator<CalculatorProcessor> CREATOR = new Creator<CalculatorProcessor>() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public CalculatorProcessor createFromParcel(Parcel source) {
             return new CalculatorProcessor(source);
@@ -68,84 +84,170 @@ public class CalculatorProcessor implements Parcelable {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mainDisplayString);
         dest.writeString(historyDisplay1String);
         dest.writeString(historyDisplay2String);
         dest.writeString(historyDisplay3String);
-        dest.writeInt(isPointPressed ? 1 : 0); //writeBoolean не совместим со старыми API, поэтому ради совместимости делаю через этот метод
-
+        dest.writeString(firstNumberStr);
+        dest.writeString(secondNumberStr);
+        dest.writeBoolean(isFirstNumberPointPressed);
+        dest.writeBoolean(isSecondNumberPointPressed);
+        dest.writeBoolean(isFirstNumberEntered);
+        dest.writeString(currentAction.getActionChar());
     }
 
     @SuppressLint("DefaultLocale")
     public String clickOnNumber(int number) {
-        if (mainDisplayString.equals("0")) {
-            mainDisplayString = "";
+        if (!isFirstNumberEntered) {
+            if (firstNumberStr.equals("0")) {
+                firstNumberStr = "";
+            }
+            firstNumberStr = String.format("%s%s", firstNumberStr, String.format("%d", number));
+        } else {
+            if (secondNumberStr.equals("0")) {
+                secondNumberStr = "";
+            }
+            secondNumberStr = String.format("%s%s", secondNumberStr, String.format("%d", number));
         }
-        mainDisplayString = String.format("%s%s", mainDisplayString, String.format("%d", number));
+        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
         return mainDisplayString;
     }
 
     public String clickOnAC() {
         mainDisplayString = "";
-        isPointPressed = false;
-        isActionButtonPressed = false;
+        firstNumberStr = "";
+        secondNumberStr = "";
+        isFirstNumberPointPressed = false;
+        isSecondNumberPointPressed = false;
+        isFirstNumberEntered = false;
+        currentAction = Actions.EMPTY;
         return mainDisplayString;
     }
 
     public String clickOnBackspace() {
-        if (!mainDisplayString.isEmpty()) {
-            if (mainDisplayString.endsWith(".")) {
-                isPointPressed = false;
-            } else if (checkEndOfLineContainAction()) {
-                isActionButtonPressed = false;
+        if (isFirstNumberEntered) {
+            if (!secondNumberStr.isEmpty()) {
+                if (secondNumberStr.endsWith(".")) {
+                    isSecondNumberPointPressed = false;
+                }
+                secondNumberStr = secondNumberStr.substring(0, secondNumberStr.length() - 1);
+            } else {
+                currentAction = Actions.EMPTY;
+                isFirstNumberEntered = false;
             }
-            mainDisplayString = mainDisplayString.substring(0, mainDisplayString.length() - 1);
+        } else {
+            if (firstNumberStr.endsWith(".")) {
+                isFirstNumberPointPressed = false;
+            }
+            firstNumberStr = firstNumberStr.substring(0, firstNumberStr.length() - 1);
         }
+
+        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
         return mainDisplayString;
     }
 
     public String clickOnPoint() {
-        if (!isPointPressed) {
-            isPointPressed = true;
-            if (mainDisplayString.isEmpty() || mainDisplayString.equals("-")) {
-                mainDisplayString += "0";
+        if (isFirstNumberEntered) {
+            if (!isSecondNumberPointPressed) {
+                isSecondNumberPointPressed = true;
+                if (secondNumberStr.isEmpty()) {
+                    secondNumberStr += "0";
+                }
+                secondNumberStr = String.format("%s%s", secondNumberStr, ".");
             }
-            mainDisplayString = String.format("%s%s", mainDisplayString, ".");
+        } else {
+            if (!isFirstNumberPointPressed) {
+                isFirstNumberPointPressed = true;
+                if (firstNumberStr.isEmpty() || firstNumberStr.equals("-")) {
+                    firstNumberStr += "0";
+                }
+                firstNumberStr = String.format("%s%s", firstNumberStr, ".");
+            }
         }
+        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
         return mainDisplayString;
     }
 
     public String clickOnAction(Actions action) {
-        if (mainDisplayString.isEmpty()) {
+        if (firstNumberStr.isEmpty()) {
             if (action == Actions.MINUS) {
-                mainDisplayString = action.getActionChar();
+                firstNumberStr = action.getActionChar();
             }
-            isActionButtonPressed = false;
+            currentAction = Actions.EMPTY;
+        } else if (firstNumberStr.equals("-")) {
+            firstNumberStr = "";
         } else {
-            if (isActionButtonPressed) {
-                if (checkEndOfLineContainAction()) {
-                    mainDisplayString = mainDisplayString.substring(0, mainDisplayString.length() - 1) + action.getActionChar();
-                }
-            } else {
-                if (!mainDisplayString.equals("-")) {
-                    firstNumber = String.format("%s", mainDisplayString);
-                    System.out.println(firstNumber);
-                    mainDisplayString = String.format("%s%s", mainDisplayString, action.getActionChar());
-                    isActionButtonPressed = true;
-                } else {
-                    if (action != Actions.MINUS) {
-                        mainDisplayString = "";
-                    }
-                }
+            isFirstNumberEntered = true;
+            if (currentAction == Actions.EMPTY) {
+                currentAction = action;
             }
         }
+        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
         return mainDisplayString;
     }
 
-    private boolean checkEndOfLineContainAction() {
-        return (mainDisplayString.endsWith("+") || mainDisplayString.endsWith("-") || mainDisplayString.endsWith("×") || mainDisplayString.endsWith("÷") || mainDisplayString.endsWith("%"));
+    @SuppressLint("DefaultLocale")
+    public String clickOnEquals(boolean isPercents) {
+        if (isFirstNumberEntered && currentAction != Actions.EMPTY && !secondNumberStr.isEmpty()) {
+            float result;
+            float firstNumber = Float.parseFloat(firstNumberStr);
+            float secondNumber = Float.parseFloat(secondNumberStr);
+
+            if (isPercents) {
+                mainDisplayString += "%";
+                switch (currentAction) {
+                    case PLUS:
+                        result = firstNumber * (1 + secondNumber / 100);
+                        break;
+                    case MINUS:
+                        result = firstNumber * (1 - secondNumber / 100);
+                        break;
+                    case MULTIPLE:
+                        result = (firstNumber * secondNumber) / 100;
+                        break;
+                    case DIVIDE:
+                        result = (firstNumber / secondNumber) * 100;
+                        break;
+                    default:
+                        result = 0;
+                }
+            } else {
+                switch (currentAction) {
+                    case PLUS:
+                        result = firstNumber + secondNumber;
+                        break;
+                    case MINUS:
+                        result = firstNumber - secondNumber;
+                        break;
+                    case MULTIPLE:
+                        result = firstNumber * secondNumber;
+                        break;
+                    case DIVIDE:
+                        result = firstNumber / secondNumber;
+                        break;
+                    default:
+                        result = 0;
+                }
+            }
+
+            secondNumberStr = "";
+            firstNumberStr = decimalFormat.format(result);
+            currentAction = Actions.EMPTY;
+            isFirstNumberEntered = false;
+            isFirstNumberPointPressed = firstNumberStr.contains(".");
+            isSecondNumberPointPressed = false;
+            //System.out.println(firstNumberStr);
+            //System.out.println(isFirstNumberPointPressed);
+            historyDisplay3String = historyDisplay2String;
+            historyDisplay2String = historyDisplay1String;
+            historyDisplay1String = mainDisplayString;
+
+        }
+        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        return mainDisplayString;
     }
 
 

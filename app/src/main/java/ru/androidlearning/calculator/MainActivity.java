@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initListeners() {
         button0.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(0)));
-
-
         button1.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(1)));
         button2.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(2)));
         button3.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(3)));
@@ -97,18 +95,28 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(7)));
         button8.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(8)));
         button9.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(9)));
+
         buttonPoint.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnPoint()));
 
         buttonPlus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PLUS)));
         buttonMinus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MINUS)));
         buttonMultiple.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MULTIPLE)));
         buttonDivide.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.DIVIDE)));
-        buttonPercents.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PERCENTS)));
+
         buttonAC.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
         buttonBackspace.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
 
         buttonEquals.setOnClickListener(v -> {
-
+            mainDisplay.setText(calculatorProcessor.clickOnEquals(false));
+            historyDisplay1.setText(calculatorProcessor.getHistoryDisplay1String());
+            historyDisplay2.setText(calculatorProcessor.getHistoryDisplay2String());
+            historyDisplay3.setText(calculatorProcessor.getHistoryDisplay3String());
+        });
+        buttonPercents.setOnClickListener(v -> {
+            mainDisplay.setText(calculatorProcessor.clickOnEquals(true));
+            historyDisplay1.setText(calculatorProcessor.getHistoryDisplay1String());
+            historyDisplay2.setText(calculatorProcessor.getHistoryDisplay2String());
+            historyDisplay3.setText(calculatorProcessor.getHistoryDisplay3String());
         });
     }
 
