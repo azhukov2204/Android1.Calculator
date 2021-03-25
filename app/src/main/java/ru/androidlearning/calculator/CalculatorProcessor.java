@@ -1,13 +1,15 @@
 package ru.androidlearning.calculator;
 
+
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.RequiresApi;
-
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 
 public class CalculatorProcessor implements Parcelable {
     private String mainDisplayString;
@@ -20,7 +22,9 @@ public class CalculatorProcessor implements Parcelable {
     private boolean isSecondNumberPointPressed;
     private boolean isFirstNumberEntered;
     private Actions currentAction;
-    private final DecimalFormat decimalFormat = new DecimalFormat("#.####");
+
+    DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.####",symbols);
 
     public CalculatorProcessor() {
         mainDisplayString = "";
@@ -36,7 +40,6 @@ public class CalculatorProcessor implements Parcelable {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     public CalculatorProcessor(Parcel in) {
         mainDisplayString = in.readString();
         historyDisplay1String = in.readString();
@@ -44,9 +47,12 @@ public class CalculatorProcessor implements Parcelable {
         historyDisplay3String = in.readString();
         firstNumberStr = in.readString();
         secondNumberStr = in.readString();
-        isFirstNumberPointPressed = in.readBoolean();
-        isSecondNumberPointPressed = in.readBoolean();
-        isFirstNumberEntered = in.readBoolean();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            isFirstNumberPointPressed = in.readBoolean();
+            isSecondNumberPointPressed = in.readBoolean();
+            isFirstNumberEntered = in.readBoolean();
+        }
+
         currentAction = Actions.valueOf(in.readString());
     }
 
@@ -84,7 +90,6 @@ public class CalculatorProcessor implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mainDisplayString);
@@ -93,9 +98,12 @@ public class CalculatorProcessor implements Parcelable {
         dest.writeString(historyDisplay3String);
         dest.writeString(firstNumberStr);
         dest.writeString(secondNumberStr);
-        dest.writeBoolean(isFirstNumberPointPressed);
-        dest.writeBoolean(isSecondNumberPointPressed);
-        dest.writeBoolean(isFirstNumberEntered);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            dest.writeBoolean(isFirstNumberPointPressed);
+            dest.writeBoolean(isSecondNumberPointPressed);
+            dest.writeBoolean(isFirstNumberEntered);
+        }
+
         dest.writeString(currentAction.getActionChar());
     }
 
@@ -189,10 +197,11 @@ public class CalculatorProcessor implements Parcelable {
         return mainDisplayString;
     }
 
-    @SuppressLint("DefaultLocale")
+
     public String clickOnEquals(boolean isPercents) {
         if (isFirstNumberEntered && currentAction != Actions.EMPTY && !secondNumberStr.isEmpty()) {
             float result;
+            //System.out.println(firstNumberStr);
             float firstNumber = Float.parseFloat(firstNumberStr);
             float secondNumber = Float.parseFloat(secondNumberStr);
 
