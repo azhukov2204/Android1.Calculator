@@ -1,67 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/font4"
-    android:backgroundTint="@color/teal_200"
-    android:backgroundTintMode="screen">
+    android:orientation="vertical"
+    style="@style/LightThemeMainLayout">
 
     <TextView
         android:id="@+id/historyDisplay3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginBottom="@dimen/defaultMargin"
-        android:textColor="@color/black"
-        android:textSize="@dimen/historyDisplayTextSize"
-        android:text="" />
+        android:gravity="end"
+        android:text=""
+        android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
         android:id="@+id/historyDisplay2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginBottom="@dimen/defaultMargin"
-        android:textColor="@color/black"
-        android:textSize="@dimen/historyDisplayTextSize"
-        android:text="" />
+        android:gravity="end"
+        android:text=""
+        android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
         android:id="@+id/historyDisplay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginBottom="@dimen/defaultMargin"
-        android:textColor="@color/black"
-        android:textSize="@dimen/historyDisplayTextSize"
-        android:text="" />
+        android:gravity="end"
+        android:text=""
+        android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
         android:id="@+id/mainDisplay"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mainDisplayHeight"
-        android:gravity="end"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginBottom="@dimen/defaultMargin"
-        android:textColor="@color/black"
-        android:background="@color/teal_200"
+        android:gravity="end"
+        android:text=""
         android:textSize="@dimen/mainDisplayTextSize"
-        android:text=""/>
+        style="@style/LightThemeMainDisplay" />
 
     <include
         layout="@layout/activity_main_keyboard_table"

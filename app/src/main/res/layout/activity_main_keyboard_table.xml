@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/LightThemeKeyboard"
     android:weightSum="5">
 
     <TableRow
@@ -13,6 +14,7 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_ac"
             android:layout_width="0dp"
@@ -20,9 +22,7 @@
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/_AC"
-            android:textSize="@dimen/buttonsTextSize"
             tools:ignore="NestedWeights" />
 
         <com.google.android.material.button.MaterialButton
@@ -32,9 +32,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_backspace"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_backspace" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_percents"
@@ -43,9 +41,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_percents"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_percents" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_divide"
@@ -54,9 +50,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/marginEnd"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_divide"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_divide" />
     </TableRow>
 
     <TableRow
@@ -73,9 +67,7 @@
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_7"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_7" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_8"
@@ -84,9 +76,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_8"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_8" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_9"
@@ -95,9 +85,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_9"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_9" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_multiple"
@@ -106,9 +94,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/marginEnd"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_multiple"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_multiple" />
     </TableRow>
 
     <TableRow
@@ -125,9 +111,7 @@
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_4"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_4" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_5"
@@ -136,9 +120,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_5"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_5" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_6"
@@ -147,9 +129,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_6"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_6" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_minus"
@@ -158,17 +138,14 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/marginEnd"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_minus"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_minus" />
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_1"
@@ -177,9 +154,7 @@
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_1"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_2"
@@ -188,9 +163,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_2"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_3"
@@ -199,9 +172,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_3"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_3" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_plus"
@@ -210,9 +181,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/marginEnd"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_plus"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_plus" />
 
     </TableRow>
 
@@ -229,10 +198,9 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/marginStart"
             android:layout_marginEnd="@dimen/defaultMargin"
-            android:layout_weight="2.04"
-            android:gravity="center"
+            android:layout_weight="2.00"
             android:text="@string/_0"
-            android:textSize="@dimen/buttonsTextSize"
+
             tools:ignore="NestedWeights" />
 
         <com.google.android.material.button.MaterialButton
@@ -242,9 +210,7 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/defaultMargin"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_point"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_point" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_equals"
@@ -253,8 +219,6 @@
             android:layout_marginStart="@dimen/defaultMargin"
             android:layout_marginEnd="@dimen/marginEnd"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/_equals"
-            android:textSize="@dimen/buttonsTextSize" />
+            android:text="@string/_equals" />
     </TableRow>
 </TableLayout>
