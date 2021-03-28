@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:visibility="gone"
+        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginBottom="@dimen/defaultMargin"
         android:textColor="@color/black"
-        android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:textSize="@dimen/historyDisplayTextSize"
+        android:visibility="gone"
+        android:text="" />
 
     <TextView
         android:id="@+id/historyDisplay2"
@@ -27,14 +27,14 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:visibility="gone"
+        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginBottom="@dimen/defaultMargin"
         android:textColor="@color/black"
-        android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:textSize="@dimen/historyDisplayTextSize"
+        android:visibility="gone"
+        android:text="" />
 
     <TextView
         android:id="@+id/historyDisplay1"
@@ -42,28 +42,28 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:visibility="gone"
+        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginBottom="@dimen/defaultMargin"
         android:textColor="@color/black"
-        android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:textSize="@dimen/historyDisplayTextSize"
+        android:visibility="gone"
+        android:text="" />
 
     <TextView
         android:id="@+id/mainDisplay"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/mainDisplayHeight"
         android:gravity="end"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginBottom="@dimen/defaultMargin"
         android:textColor="@color/black"
         android:background="@color/teal_200"
-        android:textSize="40sp"
+        android:textSize="@dimen/mainDisplayTextSize"
         android:text=""/>
 
     <include
