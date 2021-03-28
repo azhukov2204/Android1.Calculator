@@ -17,11 +17,9 @@
     </style>
 
     <style name="LightThemeMainLayout">
-        <item name="android:background">@drawable/font4</item>
+        <item name="android:background">@drawable/font</item>
         <item name="android:backgroundTint">@color/teal_200</item>
         <item name="android:backgroundTintMode">screen</item>
     </style>
-
-
 
 </resources>

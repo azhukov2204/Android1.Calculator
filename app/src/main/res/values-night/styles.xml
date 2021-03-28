@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LightThemeApp" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryDark">@color/design_dark_default_color_background</item>
+        <item name="android:textColor">#E65C5C</item>
+    </style>
+
+    <style name="LightThemeKeyboard">
+        <item name="android:textSize">@dimen/buttonsTextSize</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="LightThemeMainDisplay">
+        <item name="android:background">@color/design_dark_default_color_background</item>
+    </style>
+
+    <style name="LightThemeMainLayout">
+        <!--<item name="android:background">@drawable/font</item> -->
+        <item name="android:backgroundTint">@color/design_dark_default_color_background</item>
+        <item name="android:backgroundTintMode">screen</item>
+    </style>
+
+</resources>
