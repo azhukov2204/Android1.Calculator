@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/LightThemeKeyboard"
+    android:theme="@style/ThemeKeyboard"
     android:weightSum="5">
 
     <TableRow
@@ -17,6 +17,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_ac"
+            style="@style/CutButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/marginStart"
@@ -27,6 +28,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_backspace"
+            style="@style/CutButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -36,6 +38,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_percents"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -45,6 +48,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_divide"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -89,6 +93,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_multiple"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -133,6 +138,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_minus"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -176,6 +182,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_plus"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"
@@ -214,6 +221,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_equals"
+            style="@style/ActionButtons"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/defaultMargin"

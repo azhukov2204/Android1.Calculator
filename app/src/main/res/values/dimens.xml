@@ -7,4 +7,5 @@
     <dimen name="marginEnd">16dp</dimen>
     <dimen name="marginStart">16dp</dimen>
     <dimen name="defaultMargin">5dp</dimen>
+    <dimen name="cornerSize">15dp</dimen>
 </resources>

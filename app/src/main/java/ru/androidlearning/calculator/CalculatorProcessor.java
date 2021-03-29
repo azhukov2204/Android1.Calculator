@@ -5,7 +5,9 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.RequiresApi;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -24,7 +26,7 @@ public class CalculatorProcessor implements Parcelable {
     private Actions currentAction;
 
     DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
-    private final DecimalFormat decimalFormat = new DecimalFormat("#.####",symbols);
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.####", symbols);
 
     public CalculatorProcessor() {
         mainDisplayString = "";
@@ -147,10 +149,12 @@ public class CalculatorProcessor implements Parcelable {
                 isFirstNumberEntered = false;
             }
         } else {
-            if (firstNumberStr.endsWith(".")) {
-                isFirstNumberPointPressed = false;
+            if (!firstNumberStr.isEmpty()) {
+                if (firstNumberStr.endsWith(".")) {
+                    isFirstNumberPointPressed = false;
+                }
+                firstNumberStr = firstNumberStr.substring(0, firstNumberStr.length() - 1);
             }
-            firstNumberStr = firstNumberStr.substring(0, firstNumberStr.length() - 1);
         }
 
         mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);

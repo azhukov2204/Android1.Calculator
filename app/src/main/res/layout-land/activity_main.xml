@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/LightThemeMainLayout">
+    style="@style/ThemeMainLayout">
 
     <TextView
         android:id="@+id/historyDisplay3"
@@ -59,7 +59,7 @@
         android:gravity="end"
         android:text=""
         android:textSize="@dimen/mainDisplayTextSize"
-        style="@style/LightThemeMainDisplay" />
+        style="@style/ThemeMainDisplay" />
 
     <include
         layout="@layout/activity_main_keyboard_table"
