@@ -11,9 +11,11 @@ import androidx.annotation.RequiresApi;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 
 public class CalculatorProcessor implements Parcelable {
+    private final static String CHECK_ON_NUMBER_REGEX = "[-0-9.]+$";
     private String mainDisplayString;
     private String historyDisplay1String;
     private String historyDisplay2String;
@@ -122,7 +124,7 @@ public class CalculatorProcessor implements Parcelable {
             }
             secondNumberStr = String.format("%s%s", secondNumberStr, String.format("%d", number));
         }
-        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        mainDisplayString = getFormattedResult();
         return mainDisplayString;
     }
 
@@ -157,7 +159,7 @@ public class CalculatorProcessor implements Parcelable {
             }
         }
 
-        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        mainDisplayString = getFormattedResult();
         return mainDisplayString;
     }
 
@@ -179,7 +181,7 @@ public class CalculatorProcessor implements Parcelable {
                 firstNumberStr = String.format("%s%s", firstNumberStr, ".");
             }
         }
-        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        mainDisplayString = getFormattedResult();
         return mainDisplayString;
     }
 
@@ -197,7 +199,7 @@ public class CalculatorProcessor implements Parcelable {
                 currentAction = action;
             }
         }
-        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        mainDisplayString = getFormattedResult();
         return mainDisplayString;
     }
 
@@ -259,8 +261,15 @@ public class CalculatorProcessor implements Parcelable {
             historyDisplay1String = mainDisplayString;
 
         }
-        mainDisplayString = String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+        mainDisplayString = getFormattedResult();
+        if (!Pattern.matches(CHECK_ON_NUMBER_REGEX, firstNumberStr)) { //fix divide on zero
+            firstNumberStr = "";
+        }
         return mainDisplayString;
+    }
+
+    private String getFormattedResult() {
+        return String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
     }
 
 
