@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/font2"
+    android:background="@drawable/font4"
     android:backgroundTint="@color/teal_200"
     android:backgroundTintMode="screen">
 
@@ -18,7 +18,7 @@
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
         android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:text="" />
 
     <TextView
         android:id="@+id/historyDisplay2"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
         android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:text="" />
 
     <TextView
         android:id="@+id/historyDisplay1"
@@ -46,12 +46,12 @@
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
         android:textSize="@dimen/_historyDisplayTextSize"
-        android:text="@string/_0" />
+        android:text="" />
 
     <TextView
         android:id="@+id/mainDisplay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:gravity="end"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
@@ -61,10 +61,10 @@
         android:textColor="@color/black"
         android:background="@color/teal_200"
         android:textSize="@dimen/_mainDisplayTextSize"
-        android:text="@string/_0"/>
+        android:text=""/>
 
     <include
-        layout="@layout/activity_main_keyboard_linear"
+        layout="@layout/activity_main_keyboard_table"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
