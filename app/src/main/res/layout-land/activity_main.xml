@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ThemeMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/ThemeMainLayout">
 
     <TextView
         android:id="@+id/historyDisplay3"
@@ -16,6 +16,7 @@
         android:layout_marginBottom="@dimen/defaultMargin"
         android:gravity="end"
         android:text=""
+        android:visibility="gone"
         android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
@@ -29,6 +30,7 @@
         android:layout_marginBottom="@dimen/defaultMargin"
         android:gravity="end"
         android:text=""
+        android:visibility="gone"
         android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
@@ -42,11 +44,11 @@
         android:layout_marginBottom="@dimen/defaultMargin"
         android:gravity="end"
         android:text=""
+        android:visibility="gone"
         android:textSize="@dimen/historyDisplayTextSize" />
 
     <TextView
         android:id="@+id/mainDisplay"
-        style="@style/ThemeMainDisplay"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mainDisplayHeight"
         android:layout_gravity="center"
@@ -56,7 +58,8 @@
         android:layout_marginBottom="@dimen/defaultMargin"
         android:gravity="end"
         android:text=""
-        android:textSize="@dimen/mainDisplayTextSize" />
+        android:textSize="@dimen/mainDisplayTextSize"
+        style="@style/ThemeMainDisplay" />
 
     <include
         layout="@layout/activity_main_keyboard_table"

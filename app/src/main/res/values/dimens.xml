@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="_buttonsTextSize">20sp</dimen>
-    <dimen name="_mainDisplayTextSize">60sp</dimen>
-    <dimen name="_historyDisplayTextSize">25sp</dimen>
+    <dimen name="buttonsTextSize">20sp</dimen>
+    <dimen name="mainDisplayTextSize">60sp</dimen>
+    <dimen name="mainDisplayHeight">80dp</dimen>
+    <dimen name="historyDisplayTextSize">25sp</dimen>
+    <dimen name="marginEnd">16dp</dimen>
+    <dimen name="marginStart">16dp</dimen>
+    <dimen name="defaultMargin">5dp</dimen>
+    <dimen name="cornerSize">15dp</dimen>
 </resources>

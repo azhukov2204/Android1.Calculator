@@ -3,41 +3,16 @@ package ru.androidlearning.calculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.concurrent.locks.Condition;
 
 public class MainActivity extends AppCompatActivity {
     TextView mainDisplay;
     TextView historyDisplay1;
     TextView historyDisplay2;
     TextView historyDisplay3;
-    Button button0;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
-    Button button8;
-    Button button9;
-    Button buttonPoint;
-    Button buttonEquals;
-    Button buttonPlus;
-    Button buttonMinus;
-    Button buttonMultiple;
-    Button buttonDivide;
-    Button buttonPercents;
-    Button buttonAC;
-    Button buttonBackspace;
 
     CalculatorProcessor calculatorProcessor = new CalculatorProcessor();
-
     private final static String keyCalculatorProcessor = "CalculatorProcessor";
 
 
@@ -45,74 +20,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_main_landscape);
-        } else {
-            setContentView(R.layout.activity_main);
-        }
+        setContentView(R.layout.activity_main);
 
-        findAllElements();
+        findDisplays();
         initListeners();
         //Log.d("Orientation", String.valueOf(getResources().getConfiguration().orientation));
-
     }
 
 
-    protected void findAllElements() {
+    protected void findDisplays() {
         mainDisplay = findViewById(R.id.mainDisplay);
         historyDisplay1 = findViewById(R.id.historyDisplay1);
         historyDisplay2 = findViewById(R.id.historyDisplay2);
         historyDisplay3 = findViewById(R.id.historyDisplay3);
-        button0 = findViewById(R.id.button_0);
-        button1 = findViewById(R.id.button_1);
-        button2 = findViewById(R.id.button_2);
-        button3 = findViewById(R.id.button_3);
-        button4 = findViewById(R.id.button_4);
-        button5 = findViewById(R.id.button_5);
-        button6 = findViewById(R.id.button_6);
-        button7 = findViewById(R.id.button_7);
-        button8 = findViewById(R.id.button_8);
-        button9 = findViewById(R.id.button_9);
-        buttonPoint = findViewById(R.id.button_point);
-        buttonEquals = findViewById(R.id.button_equals);
-        buttonPlus = findViewById(R.id.button_plus);
-        buttonMinus = findViewById(R.id.button_minus);
-        buttonMultiple = findViewById(R.id.button_multiple);
-        buttonDivide = findViewById(R.id.button_divide);
-        buttonPercents = findViewById(R.id.button_percents);
-        buttonAC = findViewById(R.id.button_ac);
-        buttonBackspace = findViewById(R.id.button_backspace);
     }
 
     private void initListeners() {
-        button0.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(0)));
-        button1.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(1)));
-        button2.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(2)));
-        button3.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(3)));
-        button4.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(4)));
-        button5.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(5)));
-        button6.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(6)));
-        button7.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(7)));
-        button8.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(8)));
-        button9.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(9)));
+        //set listeners on number buttons:
+        int[] numberButtonsIds = new int[]{R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9};
+        for (int i = 0; i < numberButtonsIds.length; i++) {
+            int finalI = i;
+            findViewById(numberButtonsIds[finalI]).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(finalI)));
+        }
 
-        buttonPoint.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnPoint()));
 
-        buttonPlus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PLUS)));
-        buttonMinus.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MINUS)));
-        buttonMultiple.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MULTIPLE)));
-        buttonDivide.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.DIVIDE)));
+        findViewById(R.id.button_point).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnPoint()));
 
-        buttonAC.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
-        buttonBackspace.setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
+        findViewById(R.id.button_plus).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PLUS)));
+        findViewById(R.id.button_minus).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MINUS)));
+        findViewById(R.id.button_multiple).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MULTIPLE)));
+        findViewById(R.id.button_divide).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.DIVIDE)));
 
-        buttonEquals.setOnClickListener(v -> {
+        findViewById(R.id.button_ac).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
+        findViewById(R.id.button_backspace).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
+
+        findViewById(R.id.button_equals).setOnClickListener(v -> {
             mainDisplay.setText(calculatorProcessor.clickOnEquals(false));
             historyDisplay1.setText(calculatorProcessor.getHistoryDisplay1String());
             historyDisplay2.setText(calculatorProcessor.getHistoryDisplay2String());
             historyDisplay3.setText(calculatorProcessor.getHistoryDisplay3String());
         });
-        buttonPercents.setOnClickListener(v -> {
+        findViewById(R.id.button_percents).setOnClickListener(v -> {
             mainDisplay.setText(calculatorProcessor.clickOnEquals(true));
             historyDisplay1.setText(calculatorProcessor.getHistoryDisplay1String());
             historyDisplay2.setText(calculatorProcessor.getHistoryDisplay2String());
