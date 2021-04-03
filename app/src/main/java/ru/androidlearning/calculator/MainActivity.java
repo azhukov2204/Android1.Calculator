@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView mainDisplay;
-    TextView historyDisplay1;
-    TextView historyDisplay2;
-    TextView historyDisplay3;
+    private TextView mainDisplay;
+    private TextView historyDisplay1;
+    private TextView historyDisplay2;
+    private TextView historyDisplay3;
 
     CalculatorProcessor calculatorProcessor = new CalculatorProcessor();
     private final static String keyCalculatorProcessor = "CalculatorProcessor";

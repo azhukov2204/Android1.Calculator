@@ -1,66 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ThemeMainLayout"
+    style="@style/ThemeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/historyDisplay3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:textSize="@dimen/historyDisplayTextSize" />
+        style="@style/ThemeDisplays" />
 
     <TextView
         android:id="@+id/historyDisplay2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:textSize="@dimen/historyDisplayTextSize" />
+        style="@style/ThemeDisplays" />
 
     <TextView
         android:id="@+id/historyDisplay1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:textSize="@dimen/historyDisplayTextSize" />
+        style="@style/ThemeDisplays" />
 
     <TextView
         android:id="@+id/mainDisplay"
         style="@style/ThemeMainDisplay"
-        android:layout_width="match_parent"
         android:layout_height="@dimen/mainDisplayHeight"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
         android:textSize="@dimen/mainDisplayTextSize" />
 
     <include
         layout="@layout/activity_main_keyboard_table"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>
