@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/gray</item>
         <item name="colorPrimaryDark">@color/design_dark_default_color_background</item>
         <!--<item name="android:textColor">#E65C5C</item> -->
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
     </style>
 
@@ -21,11 +21,11 @@
         <item name="android:backgroundTintMode">screen</item>
     </style>
 
-    <style name="CutButtons">
+    <style name="CutButtons" parent="ThemeKeyboard">
         <item name="android:backgroundTint">@color/dark_gray</item>
     </style>
 
-    <style name="ActionButtons">
+    <style name="ActionButtons" parent="ThemeKeyboard">
         <item name="android:backgroundTint">@color/dark_gray</item>
     </style>
 
