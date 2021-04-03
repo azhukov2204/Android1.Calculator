@@ -2,10 +2,7 @@ package ru.androidlearning.calculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
-import android.annotation.SuppressLint;
-import android.content.res.Configuration;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -21,49 +18,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //switchThemeOnRealState();
-
         setContentView(R.layout.activity_main);
 
         findDisplays();
         initListeners();
         //Log.d("Orientation", String.valueOf(getResources().getConfiguration().orientation));
-    }
-
-    @SuppressLint("SwitchIntDef")
-    private void switchTheme() {
-        //int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        int nightMode = AppCompatDelegate.getDefaultNightMode();
-        //System.out.println(nightMode);
-
-        switch (nightMode) {
-            case AppCompatDelegate.MODE_NIGHT_YES:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-
-            case AppCompatDelegate.MODE_NIGHT_UNSPECIFIED:
-            case AppCompatDelegate.MODE_NIGHT_NO:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-        }
-    }
-
-    private void switchThemeOnRealState() {
-        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-
-            case Configuration.UI_MODE_NIGHT_UNDEFINED:
-            case Configuration.UI_MODE_NIGHT_YES:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-        }
-
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_UNSPECIFIED);
     }
 
     private void findDisplays() {
@@ -101,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
             historyDisplay3.setText(calculatorProcessor.getHistoryDisplay3String());
         });
 
-        findViewById(R.id.switchThemeButton).setOnClickListener(v -> switchTheme());
+        findViewById(R.id.switchThemeButton).setOnClickListener(v -> {
+            Intent choseThemeIntent = new Intent(MainActivity.this, ChoseOfTheme.class);
+            startActivity(choseThemeIntent);
+        });
     }
 
     @Override

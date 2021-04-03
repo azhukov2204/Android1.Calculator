@@ -23,25 +23,37 @@
         android:layout_marginStart="@dimen/defaultMargin"
         android:layout_marginEnd="@dimen/defaultMargin"
         android:orientation="vertical"
-        android:theme="@style/ThemeKeyboard">
+        android:theme="@style/ThemeDisplays">
 
+        <RadioGroup
+            android:id="@+id/radioButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/dayThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dayModeButtonText" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/nightThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nightModeButtonText" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/defaultThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/defaultThemeButtonText" />
+        </RadioGroup>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/dayThemeButton"
+            android:id="@+id/comeBackButton"
+            style="@style/ThemeKeyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nightModeButtonText" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/nightThemeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/dayModeButtonText" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/defaultThemeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/defaultThemeButtonText" />
+            android:text="@string/comeBackButtonText" />
 
     </LinearLayout>
 </FrameLayout>

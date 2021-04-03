@@ -19,8 +19,9 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/switchThemeButton"
+                style="@style/ThemeKeyboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginStart"
