@@ -19,9 +19,7 @@
 
     <TextView
         android:id="@+id/mainDisplay"
-        style="@style/ThemeMainDisplay"
-        android:layout_height="@dimen/mainDisplayHeight"
-        android:textSize="@dimen/mainDisplayTextSize" />
+        style="@style/ThemeMainDisplay" />
 
     <include
         layout="@layout/activity_main_keyboard_table"

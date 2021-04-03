@@ -11,6 +11,8 @@
 
     <style name="ThemeMainDisplay" parent="ThemeDisplays">
         <item name="android:background">@color/dark_gray</item>
+        <item name="android:layout_height">@dimen/mainDisplayHeight</item>>
+        <item name="android:textSize">@dimen/mainDisplayTextSize</item>>
     </style>
 
     <style name="ThemeLayout">
