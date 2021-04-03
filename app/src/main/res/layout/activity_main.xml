@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.button.MaterialButton
-        style="@style/ThemeKeyboard"
         android:id="@+id/switchThemeButton"
+        style="@style/ThemeKeyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart"
