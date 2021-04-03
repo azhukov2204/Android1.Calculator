@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/ThemeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".MainActivity">
 
     <TableRow
         android:layout_width="match_parent"
@@ -16,6 +18,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/switchThemeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:text="@string/changeThemeButtonText" />
 
             <TextView
                 android:id="@+id/mainDisplay"
@@ -32,6 +42,7 @@
             <TextView
                 android:id="@+id/historyDisplay3"
                 style="@style/ThemeDisplays" />
+
         </LinearLayout>
 
         <include

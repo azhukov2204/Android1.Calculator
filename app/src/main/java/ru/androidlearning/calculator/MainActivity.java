@@ -2,7 +2,10 @@ package ru.androidlearning.calculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -15,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     CalculatorProcessor calculatorProcessor = new CalculatorProcessor();
     private final static String keyCalculatorProcessor = "CalculatorProcessor";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //switchThemeOnRealState();
 
         setContentView(R.layout.activity_main);
 
@@ -27,8 +31,42 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("Orientation", String.valueOf(getResources().getConfiguration().orientation));
     }
 
+    @SuppressLint("SwitchIntDef")
+    private void switchTheme() {
+        //int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
+        //System.out.println(nightMode);
 
-    protected void findDisplays() {
+        switch (nightMode) {
+            case AppCompatDelegate.MODE_NIGHT_YES:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+
+            case AppCompatDelegate.MODE_NIGHT_UNSPECIFIED:
+            case AppCompatDelegate.MODE_NIGHT_NO:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+        }
+    }
+
+    private void switchThemeOnRealState() {
+        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+            case Configuration.UI_MODE_NIGHT_YES:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+        }
+
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_UNSPECIFIED);
+    }
+
+    private void findDisplays() {
         mainDisplay = findViewById(R.id.mainDisplay);
         historyDisplay1 = findViewById(R.id.historyDisplay1);
         historyDisplay2 = findViewById(R.id.historyDisplay2);
@@ -39,21 +77,17 @@ public class MainActivity extends AppCompatActivity {
         //set listeners on number buttons:
         int[] numberButtonsIds = new int[]{R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9};
         for (int i = 0; i < numberButtonsIds.length; i++) {
-            int finalI = i;
+            final int finalI = i;
             findViewById(numberButtonsIds[finalI]).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnNumber(finalI)));
         }
 
-
         findViewById(R.id.button_point).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnPoint()));
-
         findViewById(R.id.button_plus).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.PLUS)));
         findViewById(R.id.button_minus).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MINUS)));
         findViewById(R.id.button_multiple).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.MULTIPLE)));
         findViewById(R.id.button_divide).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAction(Actions.DIVIDE)));
-
         findViewById(R.id.button_ac).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnAC()));
         findViewById(R.id.button_backspace).setOnClickListener(v -> mainDisplay.setText(calculatorProcessor.clickOnBackspace()));
-
         findViewById(R.id.button_equals).setOnClickListener(v -> {
             mainDisplay.setText(calculatorProcessor.clickOnEquals(false));
             historyDisplay1.setText(calculatorProcessor.getHistoryDisplay1String());
@@ -66,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
             historyDisplay2.setText(calculatorProcessor.getHistoryDisplay2String());
             historyDisplay3.setText(calculatorProcessor.getHistoryDisplay3String());
         });
+
+        findViewById(R.id.switchThemeButton).setOnClickListener(v -> switchTheme());
     }
 
     @Override

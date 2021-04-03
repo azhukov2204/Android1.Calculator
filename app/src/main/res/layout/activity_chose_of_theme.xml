@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ThemeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoseOfTheme">
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/ThemeDisplays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="@dimen/marginStart"
+        android:text="@string/choseThemeText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/defaultMargin"
+        android:layout_marginEnd="@dimen/defaultMargin"
+        android:orientation="vertical"
+        android:theme="@style/ThemeKeyboard">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dayThemeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nightModeButtonText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nightThemeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dayModeButtonText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/defaultThemeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/defaultThemeButtonText" />
+
+    </LinearLayout>
+</FrameLayout>

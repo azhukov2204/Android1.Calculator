@@ -19,4 +19,9 @@
     <string name="_point">.</string>
     <string name="_equals">=</string>
     <string name="_minus">-</string>
+    <string name="changeThemeButtonText">Change the theme</string>
+    <string name="nightModeButtonText">Night</string>
+    <string name="dayModeButtonText">Day</string>
+    <string name="defaultThemeButtonText">Default (System)</string>
+    <string name="choseThemeText">Chose a Theme:</string>
 </resources>
