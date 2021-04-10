@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeApp">
+        <activity android:name=".ChoseOfTheme" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:label="ru.androidlearning.calculator.MainActivity">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_CALCULATOR" />
+                <!-- Принимаем URI с началом "app://calculator.androidlearning.ru" -->
+                <data
+                    android:host="calculator.androidlearning.ru"
+                    android:scheme="app" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

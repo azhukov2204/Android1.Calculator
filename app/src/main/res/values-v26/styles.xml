@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ThemeMainDisplay" parent="ThemeDisplays">
+        <item name="android:background">@color/teal_200</item>
+        <item name="android:layout_height">@dimen/mainDisplayHeight</item>
+        <item name="android:textSize">@dimen/mainDisplayTextSize</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">@dimen/historyDisplayTextSize</item>
+        <item name="android:autoSizeMaxTextSize">@dimen/mainDisplayTextSize</item>
+        <item name="android:autoSizeStepGranularity">1sp</item>
+    </style>
+</resources>

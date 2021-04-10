@@ -1,69 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ThemeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    style="@style/ThemeMainLayout">
+    android:weightSum="1"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/historyDisplay3"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:visibility="gone"
-        android:textSize="@dimen/historyDisplayTextSize" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="2">
 
-    <TextView
-        android:id="@+id/historyDisplay2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:visibility="gone"
-        android:textSize="@dimen/historyDisplayTextSize" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/historyDisplay1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:visibility="gone"
-        android:textSize="@dimen/historyDisplayTextSize" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/switchThemeButton"
+                style="@style/ThemeKeyboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:text="@string/changeThemeButtonText" />
 
-    <TextView
-        android:id="@+id/mainDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mainDisplayHeight"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="@dimen/defaultMargin"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/defaultMargin"
-        android:gravity="end"
-        android:text=""
-        android:textSize="@dimen/mainDisplayTextSize"
-        style="@style/ThemeMainDisplay" />
+            <TextView
+                android:id="@+id/mainDisplay"
+                style="@style/ThemeMainDisplay" />
 
-    <include
-        layout="@layout/activity_main_keyboard_table"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/historyDisplay1"
+                style="@style/ThemeDisplays" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/historyDisplay2"
+                style="@style/ThemeDisplays" />
+
+            <TextView
+                android:id="@+id/historyDisplay3"
+                style="@style/ThemeDisplays" />
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/activity_main_keyboard_table"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </TableRow>
+
+
+</TableLayout>

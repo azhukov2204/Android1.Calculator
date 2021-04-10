@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="changeThemeButtonText">Сменить тему</string>
+    <string name="nightModeButtonText">Ночная</string>
+    <string name="dayModeButtonText">Дневная</string>
+    <string name="defaultThemeButtonText">По-умолчанию (выбрано системой)</string>
+    <string name="choseThemeText">Выберите тему:</string>
+    <string name="comeBackButtonText">Вернуться назад</string>
+</resources>

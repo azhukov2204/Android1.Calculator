@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ThemeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/ThemeDisplays"
+    tools:context=".ChoseOfTheme">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="@dimen/marginStart"
+        android:gravity="center"
+        android:text="@string/choseThemeText" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RadioGroup
+            android:id="@+id/changeThemeRButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_gravity="center|top">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/dayThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dayModeButtonText" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/nightThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nightModeButtonText" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/defaultThemeRButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/defaultThemeButtonText" />
+        </RadioGroup>
+
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/comeBackButton"
+        style="@style/ThemeKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/comeBackButtonText" />
+
+</LinearLayout>
