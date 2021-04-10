@@ -115,12 +115,12 @@ public class CalculatorProcessor implements Parcelable {
             if (firstNumberStr.equals("0")) {
                 firstNumberStr = "";
             }
-            firstNumberStr = String.format("%s%s", firstNumberStr, String.format("%d", number));
+            firstNumberStr = addNumberToString(firstNumberStr, number);
         } else {
             if (secondNumberStr.equals("0")) {
                 secondNumberStr = "";
             }
-            secondNumberStr = String.format("%s%s", secondNumberStr, String.format("%d", number));
+            secondNumberStr = addNumberToString(secondNumberStr, number);
         }
         mainDisplayString = getFormattedResult();
         return mainDisplayString;
@@ -143,7 +143,7 @@ public class CalculatorProcessor implements Parcelable {
                 if (secondNumberStr.endsWith(".")) {
                     isSecondNumberPointPressed = false;
                 }
-                secondNumberStr = secondNumberStr.substring(0, secondNumberStr.length() - 1);
+                secondNumberStr = removeLastSymbol(secondNumberStr);
             } else {
                 currentAction = Actions.EMPTY;
                 isFirstNumberEntered = false;
@@ -153,7 +153,7 @@ public class CalculatorProcessor implements Parcelable {
                 if (firstNumberStr.endsWith(".")) {
                     isFirstNumberPointPressed = false;
                 }
-                firstNumberStr = firstNumberStr.substring(0, firstNumberStr.length() - 1);
+                firstNumberStr = removeLastSymbol(firstNumberStr);
             }
         }
 
@@ -168,7 +168,7 @@ public class CalculatorProcessor implements Parcelable {
                 if (secondNumberStr.isEmpty()) {
                     secondNumberStr += "0";
                 }
-                secondNumberStr = String.format("%s%s", secondNumberStr, ".");
+                secondNumberStr = addPointToSting(secondNumberStr);
             }
         } else {
             if (!isFirstNumberPointPressed) {
@@ -176,7 +176,7 @@ public class CalculatorProcessor implements Parcelable {
                 if (firstNumberStr.isEmpty() || firstNumberStr.equals("-")) {
                     firstNumberStr += "0";
                 }
-                firstNumberStr = String.format("%s%s", firstNumberStr, ".");
+                firstNumberStr = addPointToSting(firstNumberStr);
             }
         }
         mainDisplayString = getFormattedResult();
@@ -268,6 +268,18 @@ public class CalculatorProcessor implements Parcelable {
 
     private String getFormattedResult() {
         return String.format("%s%s%s", firstNumberStr, currentAction.getActionChar(), secondNumberStr);
+    }
+
+    private String removeLastSymbol(String srt) {
+        return  srt.substring(0, srt.length() - 1);
+    }
+
+    private String addNumberToString(String str, int number) {
+        return  String.format("%s%s", str, String.format(Locale.US, "%d", number));
+    }
+
+    private String addPointToSting(String str) {
+        return String.format("%s%s", str, ".");
     }
 
 
